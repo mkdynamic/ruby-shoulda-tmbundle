@@ -1,0 +1,20 @@
+def parse_from_quotes(name)
+  name.to_s.gsub(/^(?:.*"(.*)"|.*'(.*)').*$/) { $1 || $2 }
+end
+
+n = ENV['TM_LINE_NUMBER'].to_i
+
+should, context = nil, nil
+
+File.open(ENV['TM_FILEPATH']) do |f|
+  lines     = f.read.split("\n")[0...n].reverse
+  context   = lines.find { |line| line =~ /^\s*context\b/ }
+  should    = parse_from_quotes(lines.find { |line| line =~ /^\s*should\b/ })
+end
+
+if !context.empty? &amp;&amp; !should.empty?
+  puts "shoulda"
+  context = parse_from_quotes( context )
+  name = "#{context} should #{should}".gsub(/[\+\.\s\'\"\(\)]/,'.')
+  print "--name=/#{name}/ -v v"  
+end
