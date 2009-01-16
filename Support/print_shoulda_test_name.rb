@@ -12,7 +12,6 @@ File.open(ENV['TM_FILEPATH']) do |f|
   should    = parse_from_quotes(lines.find { |line| line =~ /^\s*should\b/ })
   lines.find { |line| line =~ /^\s*class (\w*)Test/ }
   class_name = $1
-  puts class_name
 end
 
 if (context || class_name) && should
