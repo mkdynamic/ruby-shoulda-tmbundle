@@ -3,16 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>context "${1:description}" do
-  $0
-end</string>
+	<string>req { ${1} }
+$0</string>
 	<key>name</key>
-	<string>context block</string>
+	<string>request block (inline)</string>
 	<key>scope</key>
 	<string>source.ruby.rails.shoulda</string>
 	<key>tabTrigger</key>
-	<string>c</string>
+	<string>q</string>
 	<key>uuid</key>
-	<string>9AD00D7F-EB66-431C-A3BD-13DEE32BA00F</string>
+	<string>724FDE72-EFB7-454D-AEF0-E5DBBCD3F911</string>
 </dict>
 </plist>
